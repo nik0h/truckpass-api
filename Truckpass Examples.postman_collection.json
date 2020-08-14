@@ -1,0 +1,587 @@
+{
+	"info": {
+		"_postman_id": "8a1aadbd-e3ad-4a5c-94ea-290830eda18e",
+		"name": "Truckpass Examples",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Clients",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "http://localhost:3000/clients",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"clients"
+					]
+				},
+				"description": "Returns an array of all client companies currently registered with the service."
+			},
+			"response": []
+		},
+		{
+			"name": "Activate User",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "tp-parent",
+						"value": "testco",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Cat Zanji",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/activate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"activate"
+					]
+				},
+				"description": "Activate a created user to enable login for that user. Returns the passphrase to be stored locally and used in future requests, or an error for already activated users."
+			},
+			"response": []
+		},
+		{
+			"name": "Login User",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "tp-parent",
+						"value": "testco",
+						"type": "text"
+					},
+					{
+						"key": "",
+						"value": "",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "auth",
+							"value": "BanzaiKisser",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"login"
+					]
+				},
+				"description": "Returns the relevant user based on the locally stored passphrase."
+			},
+			"response": []
+		},
+		{
+			"name": "Get User Info",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "tp-parent",
+						"value": "testco",
+						"type": "text"
+					},
+					{
+						"key": "tp-auth",
+						"value": "BanzaiKisser",
+						"type": "text"
+					},
+					{
+						"key": "",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/userInfo",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"userInfo"
+					]
+				},
+				"description": "Retrive all info for the context user to display in the UI."
+			},
+			"response": []
+		},
+		{
+			"name": "Use Check",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "tp-parent",
+						"value": "testco",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					},
+					{
+						"key": "tp-auth",
+						"value": "BanzaiKisser",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "code",
+							"value": "123456789012345",
+							"type": "text"
+						},
+						{
+							"key": "usage",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/use",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"use"
+					]
+				},
+				"description": "Sets a user's check allotment as used. Can only be used for current, unused checks."
+			},
+			"response": []
+		},
+		{
+			"name": "Send Receipt",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "tp-parent",
+						"value": "testco",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "tp-auth",
+						"value": "BanzaiKisser",
+						"type": "text"
+					},
+					{
+						"key": "tp-id",
+						"value": "5e239ad4143b2904e0142b6f",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "file",
+					"file": {
+						"src": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/sendReceipt",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"sendReceipt"
+					]
+				},
+				"description": "Send receipt for a user's check pending review. (Attach a file to test this)."
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Checks (Admin)",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "tp-parent",
+						"value": "testco",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "tp-auth",
+						"value": "BanzaiKisser",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "http://localhost:3000/admin/checks/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"admin",
+						"checks",
+						""
+					]
+				},
+				"description": "Returns a list of all checks and their relevant info. Requires the passphrase of an admin user."
+			},
+			"response": []
+		},
+		{
+			"name": "Get User History (Admin)",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "tp-parent",
+						"value": "testco",
+						"type": "text"
+					},
+					{
+						"key": "tp-auth",
+						"value": "BanzaiKisser",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id",
+							"value": "5e161359526e056d9c95d615",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/admin/users/5e161359526e056d9c95d615/history",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"admin",
+						"users",
+						"5e161359526e056d9c95d615",
+						"history"
+					]
+				},
+				"description": "Returns all checks ever associated with a user, for accountability purposes."
+			},
+			"response": []
+		},
+		{
+			"name": "Add Check to User (Admin)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "tp-parent",
+						"value": "testco",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					},
+					{
+						"key": "tp-auth",
+						"value": "BanzaiKisser",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "checkId",
+							"value": "5e239ad4143b2904e0142b6f",
+							"type": "text"
+						},
+						{
+							"key": "userId",
+							"value": "5e161359526e056d9c95d615",
+							"type": "text"
+						},
+						{
+							"key": "balance",
+							"value": "210.00",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/admin/checkUser",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"admin",
+						"checkUser"
+					]
+				},
+				"description": "Assigns a check and amount to a user. Requires the user ID, check ID, and amount to assign. Must be executed by an admin."
+			},
+			"response": []
+		},
+		{
+			"name": "Lock User (Admin)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "tp-parent",
+						"value": "testco",
+						"type": "text"
+					},
+					{
+						"key": "tp-auth",
+						"value": "BanzaiKisser",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id",
+							"value": "5e167a23a220057204400457",
+							"type": "text"
+						},
+						{
+							"key": "state",
+							"value": "false",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/admin/userLock",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"admin",
+						"userLock"
+					]
+				},
+				"description": "Lock or unlock a user. Prevents login after first authentication if a user is found misusing the system."
+			},
+			"response": []
+		},
+		{
+			"name": "Get Proof (Admin)",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "tp-parent",
+						"value": "testco",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					},
+					{
+						"key": "tp-auth",
+						"value": "BanzaiKisser",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "state",
+							"value": "1",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "id",
+							"value": "5e26c0084888438ec8ddf276",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/admin/proofs/5f37103bb07767a01c32c172",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"admin",
+						"proofs",
+						"5f37103bb07767a01c32c172"
+					]
+				},
+				"description": "Retrieve image by file ID, stored in receipts with each submission."
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Proofs (Admin)",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "tp-parent",
+						"value": "testco",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					},
+					{
+						"key": "tp-auth",
+						"value": "BanzaiKisser",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "file",
+					"file": {
+						"src": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/admin/proofs",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"admin",
+						"proofs"
+					]
+				},
+				"description": "Get list of all current receipts to be reviewed."
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
